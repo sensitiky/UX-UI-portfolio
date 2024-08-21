@@ -12,32 +12,32 @@ Follow the steps below to clone, install and run this project on your local mach
 
     ````bash
     git clone https://github.com/sensitiky/UX-UI-portfolio
-    ```
+    
 
 2.  **Navigate to the project directory:**
 
     ````bash
     cd your-repository
-    ```
+    
 
 3.  **Install the dependencies:**
 
     ````bash
     npm install
-    ```
+    
 
 4.  **Start the development server:**
 
     ````bash
     npm run dev
-    ```
+    
 
 5.  **Open your browser and enter:**
-
+    
+    ````bash
     http://localhost:4321
-        
 
-    Here you can see your portfolio in action.
+Here you can see your portfolio in action.
 
 ## 🛠️ Technologies Used
 
