@@ -1,0 +1,62 @@
+---
+
+---
+
+<div
+  id="scrollIndicator"
+  class="fixed bottom-8 right-8 w-8 h-14 border-2 border-white rounded-full p-1 hidden"
+>
+  <div class="w-full h-3 bg-white rounded-full opacity-75 animate-scroll"></div>
+</div>
+
+<style>
+  @keyframes scroll {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    75% {
+      transform: translateY(150%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(150%);
+      opacity: 0;
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+
+  #scrollIndicator {
+    transition: opacity 0.3s ease-in-out;
+  }
+</style>
+
+<script>
+  const scrollIndicator = document.getElementById("scrollIndicator");
+
+  function toggleScrollIndicator() {
+    if (scrollIndicator) {
+      const scrollTop = window.scrollY;
+      const scrollBottom =
+        document.documentElement.scrollHeight - window.innerHeight - scrollTop;
+
+      if (scrollBottom <= 0) {
+        scrollIndicator.classList.add("opacity-0");
+        setTimeout(() => {
+          scrollIndicator.classList.add("hidden");
+        }, 300);
+      } else {
+        scrollIndicator.classList.remove("hidden");
+        setTimeout(() => {
+          scrollIndicator.classList.remove("opacity-0");
+        }, 10);
+      }
+    }
+  }
+
+  window.addEventListener("load", toggleScrollIndicator);
+  window.addEventListener("scroll", toggleScrollIndicator);
+</script>
