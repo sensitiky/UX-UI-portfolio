@@ -2,53 +2,54 @@
 
 ![Astro](https://astro.build/assets/press/astro-logo-dark.png)
 
-Este es un proyecto de portfolio UX/UI creado para mostrar habilidades y proyectos. Está construido utilizando [Astro](https://astro.build/), un framework moderno para la web, y [Tailwind CSS](https://tailwindcss.com/), un framework CSS altamente utilitario para diseñar interfaces rápidas y estilizadas.
+This is a UX/UI portfolio project created to showcase skills and projects. It is built using [Astro](https://astro.build/), a modern framework for the web, and [Tailwind CSS](https://tailwindcss.com/), a highly utilitarian CSS framework for designing fast and stylish interfaces.
 
-## 🚀 Instalación y Uso
+## 🚀 Installation and Usage.
 
-Sigue los pasos a continuación para clonar, instalar y ejecutar este proyecto en tu máquina local:
+Follow the steps below to clone, install and run this project on your local machine:
 
-1.  **Clona este repositorio:**
+1.  **Clone this repository:**
 
-    ```bash
+    ````bash
     git clone https://github.com/sensitiky/UX-UI-portfolio
     ```
 
-2.  **Navega al directorio del proyecto:**
+2.  **Navigate to the project directory:**
 
-    ```bash
-    cd tu-repositorio
+    ````bash
+    cd your-repository
     ```
 
-3.  **Instala las dependencias:**
+3.  **Install the dependencies:**
 
-    ```bash
+    ````bash
     npm install
     ```
 
-4.  **Inicia el servidor de desarrollo:**
+4.  **Start the development server:**
 
-    ```bash
+    ````bash
     npm run dev
     ```
 
-5.  **Abre tu navegador e ingresa a:**
+5.  **Open your browser and enter:**
 
-        ```arduino
-        http://localhost:4321
-        ```
+    http://localhost:4321
+        
 
-    Aquí podrás ver tu portafolio en acción.
+    Here you can see your portfolio in action.
 
-## 🛠️ Tecnologías Utilizadas
+## 🛠️ Technologies Used
 
-- Astro: Framework moderno para la creación de sitios web rápidos y eficientes.
-- Tailwind CSS: Framework CSS utilitario para un diseño rápido y modular.
+- Astro: Modern framework for creating fast and efficient websites.
+- Tailwind CSS: Utility CSS framework for fast and modular design.
 
-## 📂 Estructura del Proyecto
+## 📂 Project Structure
 
-- src/: Contiene los archivos fuente del proyecto.
-- public/: Contiene los archivos estáticos, como imágenes y fuentes.
-- package.json: Contiene la información del proyecto y las dependencias necesarias.
+- src/: Contains the project source files.
+- public/: Contains the static files, such as images and fonts.
+- package.json: Contains the project information and necessary dependencies.
 
-Hecho con 💖 y Astro
+Made with 💖 and Astro
+
+Translated with DeepL.com (free version)
