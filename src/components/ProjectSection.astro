@@ -35,7 +35,7 @@ const categories = ["All", "Web", "Mobile"];
       {
         projects.map((project) => (
           <div
-            class="project group relative transition-all duration-300 hover:-translate-y-2"
+            class="project group relative transition-all duration-300 hover:-translate-y-4"
             data-category={project.category}
           >
             <div class="aspect-w-16 aspect-h-9 mb-4">
@@ -102,8 +102,8 @@ const categories = ["All", "Web", "Mobile"];
               <h3 class="text-xl font-semibold mb-2">{project.title}</h3>
               <p class="text-gray-400">{project.category}</p>
             </div>
-            <div class="absolute inset-0 bg-[#1a1a1a] bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <button class="bg-white text-gray-900 px-4 py-2 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300">
+            <div class="absolute inset-0 bg-[#1a1a1a] bg-opacity-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <button class="bg-white text-gray-900 px-4 py-2 rounded-full font-semibold hover:bg-white/60 transition-colors duration-300">
                 View Project
               </button>
             </div>

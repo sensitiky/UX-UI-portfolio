@@ -1,0 +1,102 @@
+---
+
+---
+
+<section id="about" class="bg-[#1a1a1a] py-16 px-4 overflow-hidden relative">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-center text-white">About Me</h2>
+
+    <div
+      class="p-8 mb-12 transform transition-all duration-500 hover:scale-[1.02]"
+    >
+      <p class="text-white mb-6 leading-relaxed">
+        I'm a passionate UX/UI designer with over 5 years of experience creating
+        intuitive and visually appealing digital experiences. My approach
+        combines user-centered design principles with a keen eye for aesthetics
+        to deliver products that not only look great but also provide
+        exceptional usability.
+      </p>
+      <p class="text-white leading-relaxed">
+        When I'm not designing, you can find me exploring new coffee shops,
+        practicing photography, or contributing to open-source design projects.
+      </p>
+    </div>
+  </div>
+
+  <!-- Lienzo para la línea de onda -->
+  <canvas
+    id="waveCanvas"
+    class="hidden md:block absolute top-0 left-0 w-full h-full"></canvas>
+</section>
+
+<style>
+  #about {
+    position: relative;
+    overflow: hidden;
+  }
+
+  #waveCanvas {
+    z-index: 5;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const canvas = document.getElementById("waveCanvas") as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      startWave();
+    }
+
+    // Suavizado
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
+
+    let hue = 0;
+    let waveX, waveY;
+
+    function startWave() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar el lienzo al redimensionar
+      waveX = -33;
+      waveY = canvas.height; // Reiniciar las posiciones
+      animateWave();
+    }
+    function eraseWave() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+    }
+
+    function drawWave(x, y) {
+      ctx.lineTo(x, y);
+      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`; // Línea arcoíris
+      ctx.lineWidth = 2; // Grosor de la línea
+      ctx.stroke();
+    }
+
+    function animateWave() {
+      waveX += 5; // Movimiento horizontal
+      waveY -= 2; // Movimiento diagonal hacia arriba
+      hue += 2; // Cambio de color progresivo
+      if (hue >= 360) hue = 0; // Reinicia el ciclo de color
+
+      const waveYOffset = Math.sin(waveX * 0.02) * 75; // Controla la amplitud y la frecuencia de la onda
+
+      drawWave(waveX, waveY + waveYOffset);
+
+      if (waveX < canvas.width) {
+        requestAnimationFrame(animateWave);
+      } else {
+        // Cuando la animación alcanza el final de la pantalla, reinicia
+        eraseWave();
+        startWave();
+      }
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas(); // Llama a la función de ajuste de tamaño al cargar
+  });
+</script>
