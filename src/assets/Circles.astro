@@ -13,13 +13,16 @@
 
   .large-circle {
     position: absolute;
-    top: -70rem;
-    right: -35%;
-    width: 150vh;
-    height: 150vh;
+    top: -225vh; /* Ajusta la posición superior con respecto a la altura de la ventana */
+    right: -50vw; /* Ajusta la posición derecha con respecto al ancho de la ventana */
+    width: max(
+      100vh,
+      100vw
+    ); /* Asegura que el círculo sea lo suficientemente grande */
+    height: max(100vh, 100vw);
     background: none;
     border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
+    border-radius: 50%; /* Asegúrate de que el círculo esté detrás de otros elementos */
   }
   .large-circle::before {
     content: "";
@@ -34,10 +37,13 @@
   }
   .large-circle2 {
     position: absolute;
-    top: -23rem;
-    left: -35%;
-    width: 150vh;
-    height: 150vh;
+    top: -60vh;
+    left: -50vw;
+    width: max(
+      100vh,
+      100vw
+    ); /* Asegura que el círculo sea lo suficientemente grande */
+    height: max(100vh, 100vw);
     background: none;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
@@ -53,9 +59,31 @@
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
   }
+  .bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0.05;
+  }
+
+  .bg-circle-top {
+    width: max(20rem, 10vw); /* Asegura un tamaño adaptable según la pantalla */
+    height: max(20rem, 10vw);
+    top: max(-15vw, -6.5rem); /* Ajusta la posición superior */
+    right: max(-15vw, -5.5rem); /* Ajusta la posición derecha */
+  }
+
+  .bg-circle-bottom {
+    width: max(15rem, 10vw); /* Asegura un tamaño adaptable según la pantalla */
+    height: max(15rem, 10vw);
+    top: max(-10vw, 55rem); /* Ajusta la posición inferior */
+    left: max(-15vw, -7rem); /* Ajusta la posición izquierda */
+  }
 </style>
 
 <div class="hero-bg">
   <div class="large-circle"></div>
   <div class="large-circle2"></div>
 </div>
+<div class="bg-circle bg-circle-top"></div>
+<div class="bg-circle bg-circle-bottom"></div>

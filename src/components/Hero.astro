@@ -32,8 +32,6 @@ const { title, description, button1, button2 } = Astro.props;
           </div>
         </div>
       </div>
-      <div class="bg-circle bg-circle-top"></div>
-      <div class="bg-circle bg-circle-bottom"></div>
     </div>
   </section>
 </main>
@@ -137,27 +135,6 @@ const { title, description, button1, button2 } = Astro.props;
     50% {
       transform: translateY(-10px);
     }
-  }
-
-  .bg-circle {
-    position: absolute;
-    border-radius: 50%;
-    background-color: white;
-    opacity: 0.05;
-  }
-
-  .bg-circle-top {
-    width: 15rem;
-    height: 15rem;
-    top: -7.5rem;
-    right: -7.5rem;
-  }
-
-  .bg-circle-bottom {
-    width: 12rem;
-    height: 12rem;
-    bottom: -6rem;
-    left: -6rem;
   }
 </style>
 
