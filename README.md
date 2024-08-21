@@ -41,15 +41,13 @@ Here you can see your portfolio in action.
 
 ## 🛠️ Technologies Used
 
-- Astro: Modern framework for creating fast and efficient websites.
-- Tailwind CSS: Utility CSS framework for fast and modular design.
+- **Astro:** Modern framework for creating fast and efficient websites.
+- **Tailwind CSS:** Utility CSS framework for fast and modular design.
 
 ## 📂 Project Structure
 
-- src/: Contains the project source files.
-- public/: Contains the static files, such as images and fonts.
-- package.json: Contains the project information and necessary dependencies.
+- **src/:** Contains the project source files.
+- **public/:** Contains the static files, such as images and fonts.
+- **package.json:** Contains the project information and necessary dependencies.
 
 Made with 💖 and Astro
-
-Translated with DeepL.com (free version)
