@@ -2,7 +2,7 @@
 
 ![Astro](https://astro.build/assets/press/astro-logo-dark.png)
 
-Este es un proyecto de portafolio UX/UI creado para mostrar habilidades y proyectos. Está construido utilizando [Astro](https://astro.build/), un framework moderno para la web, y [Tailwind CSS](https://tailwindcss.com/), un framework CSS altamente utilitario para diseñar interfaces rápidas y estilizadas.
+Este es un proyecto de portfolio UX/UI creado para mostrar habilidades y proyectos. Está construido utilizando [Astro](https://astro.build/), un framework moderno para la web, y [Tailwind CSS](https://tailwindcss.com/), un framework CSS altamente utilitario para diseñar interfaces rápidas y estilizadas.
 
 ## 🚀 Instalación y Uso
 
