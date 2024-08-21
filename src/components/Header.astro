@@ -1,0 +1,122 @@
+---
+const navItems = [
+  { href: "#home", text: "Home" },
+  { href: "#projects", text: "Projects" },
+  { href: "#about", text: "About" },
+  { href: "#contact", text: "Contact" },
+];
+---
+
+<header class="fixed w-full bg-inherit text-white z-10">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex justify-between items-center py-4">
+      <div class="text-2xl font-bold">
+        <a
+          href="/"
+          class="text-white hover:text-gray-300 transition-colors duration-300"
+        >
+          UX/UI Designer
+        </a>
+      </div>
+
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6">
+          {
+            navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="text-white hover:text-gray-300 transition-colors duration-300"
+                >
+                  {item.text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <button
+        id="menuButton"
+        class="md:hidden text-white focus:outline-none"
+        aria-label="Toggle menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-gray-800">
+    <nav class="px-4 py-2">
+      <ul class="space-y-2">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="block py-2 text-white hover:text-gray-300 transition-colors duration-300"
+              >
+                {item.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.getElementById("menuButton");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    if (
+      mobileMenu &&
+      !mobileMenu.contains(event.target as Node) &&
+      !menuButton?.contains(event.target as Node)
+    ) {
+      mobileMenu.classList.add("hidden");
+    }
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const href = this.getAttribute("href");
+      if (href) {
+        document.querySelector(href)?.scrollIntoView({
+          behavior: "smooth",
+        });
+        if (mobileMenu) {
+          mobileMenu.classList.add("hidden");
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  :global(body) {
+    padding-top: 4rem;
+  }
+</style>

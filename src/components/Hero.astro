@@ -1,0 +1,183 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  button1: string;
+  button2: string;
+}
+const { title, description, button1, button2 } = Astro.props;
+---
+
+<main id="home">
+  <section class="hero">
+    <div class="component-container">
+      <div class="content">
+        <h1 class="title hidden">
+          {title}
+        </h1>
+        <p class="subtitle hidden">
+          {description}
+        </p>
+        <div class="button-group">
+          <button class="button-primary hidden">
+            {button1}
+          </button>
+          <button class="button-secondary hidden">
+            {button2}
+          </button>
+        </div>
+        <div class="arrow-container">
+          <div class="arrow" id="scrollArrow">
+            <img src="/arrow.svg" alt="Arrow" style="height: 4rem;" />
+          </div>
+        </div>
+      </div>
+      <div class="bg-circle bg-circle-top"></div>
+      <div class="bg-circle bg-circle-bottom"></div>
+    </div>
+  </section>
+</main>
+
+<style>
+  .component-container {
+    background-color: #1a1a1a;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .content {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transition: opacity 1s ease-in-out 0.3s;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .button-primary,
+  .button-secondary {
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition:
+      transform 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .button-primary {
+    background-color: #4caf50;
+    color: #fff;
+  }
+
+  .button-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid #4caf50;
+  }
+
+  .button-primary:hover,
+  .button-secondary:hover {
+    transform: scale(1.05);
+  }
+
+  .visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hidden {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .arrow-container {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .arrow {
+    animation: bounce 2s infinite;
+    cursor: pointer;
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0.05;
+  }
+
+  .bg-circle-top {
+    width: 15rem;
+    height: 15rem;
+    top: -7.5rem;
+    right: -7.5rem;
+  }
+
+  .bg-circle-bottom {
+    width: 12rem;
+    height: 12rem;
+    bottom: -6rem;
+    left: -6rem;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(
+      ".title, .subtitle, .button-primary, .button-secondary"
+    );
+    elements.forEach((element) => {
+      element.classList.remove("hidden");
+      element.classList.add("visible");
+    });
+
+    const scrollArrow = document.getElementById("scrollArrow");
+    if (scrollArrow) {
+      scrollArrow.addEventListener("click", () => {
+        document.getElementById("projects")?.scrollIntoView({
+          behavior: "smooth",
+        });
+      });
+    }
+  });
+</script>
