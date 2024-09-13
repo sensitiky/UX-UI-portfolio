@@ -1,19 +1,26 @@
 ---
 const projects = [
-  { id: 1, title: "E-commerce Redesign", category: "Web", color: "#3B82F6" },
-  { id: 2, title: "Finance App", category: "Mobile", color: "#10B981" },
-  { id: 3, title: "Travel Planner", category: "Web", color: "#F59E0B" },
-  { id: 4, title: "Fitness Tracker", category: "Mobile", color: "#EF4444" },
-  { id: 5, title: "Restaurant Booking", category: "Web", color: "#8B5CF6" },
-  { id: 6, title: "Smart Home Dashboard", category: "Web", color: "#6366F1" },
+  {
+    id: 1,
+    title: 'Universal Club Design',
+    category: 'Web',
+    color: '#636060',
+    images: ['/TRAP UNIVERSAL (1).png', '/TRAP UNIVERSAL (2).png'],
+    link: 'https://www.instagram.com/p/C_zHc6PJq0H/?igsh=MXc2YWlldmI3cHI2dA==',
+  },
+  { id: 2, title: 'Finance App', category: 'Mobile', color: '#10B981' },
+  { id: 3, title: 'Travel Planner', category: 'Web', color: '#F59E0B' },
+  { id: 4, title: 'Fitness Tracker', category: 'Mobile', color: '#EF4444' },
+  { id: 5, title: 'Restaurant Booking', category: 'Web', color: '#8B5CF6' },
+  { id: 6, title: 'Smart Home Dashboard', category: 'Web', color: '#6366F1' },
 ];
 
-const categories = ["All", "Web", "Mobile"];
+const categories = ['All', 'Web', 'Mobile'];
 ---
 
 <section id="projects" class="bg-[#1a1a1a] text-white py-16 px-4">
   <div class="max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold mb-8 text-center">Mockups</h2>
+    <h2 class="text-3xl font-bold mb-8 text-center">Designs</h2>
 
     <div class="flex justify-center mb-12">
       {
@@ -39,7 +46,17 @@ const categories = ["All", "Web", "Mobile"];
             data-category={project.category}
           >
             <div class="aspect-w-16 aspect-h-9 mb-4">
-              {project.category === "Web" ? (
+              {project.images ? (
+                <div class="slider" data-project-id={project.id}>
+                  {project.images.map((image, index) => (
+                    <img
+                      src={image}
+                      alt={`${project.title} ${index + 1}`}
+                      class={`w-full h-auto object-fill ${index === 0 ? 'active' : 'hidden'}`}
+                    />
+                  ))}
+                </div>
+              ) : project.category === 'Web' ? (
                 <svg
                   class="w-full h-auto"
                   viewBox="0 0 200 120"
@@ -102,9 +119,11 @@ const categories = ["All", "Web", "Mobile"];
               <h3 class="text-xl font-semibold mb-2">{project.title}</h3>
               <p class="text-gray-400">{project.category}</p>
             </div>
-            <div class="absolute inset-0 bg-[#1a1a1a] bg-opacity-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <div class="absolute inset-0 bg-[#1a1a1a] bg-opacity-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <button class="bg-white text-gray-900 px-4 py-2 rounded-full font-semibold hover:bg-white/60 transition-colors duration-300">
-                View Project
+                <a href={project.link} target="_blank">
+                  View Post
+                </a>
               </button>
             </div>
           </div>
@@ -129,29 +148,68 @@ const categories = ["All", "Web", "Mobile"];
   .project.hidden {
     display: none;
   }
+
+  .slider img.hidden {
+    display: none;
+  }
+
+  .slider img.active {
+    display: block;
+  }
 </style>
 
 <script>
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const projects = document.querySelectorAll(".project");
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projects = document.querySelectorAll('.project');
+  const intervalImage = 1500;
+  function updateImageIndex() {
+    const visibleProjects = Array.from(projects).filter(
+      (project) => !project.classList.contains('hidden')
+    );
+    visibleProjects.forEach((project, index) => {
+      const img = project.querySelector('img');
+      if (img) {
+        img.setAttribute('data-index', (index + 1).toString());
+      }
+    });
+  }
+
+  function startImageSlider() {
+    const sliders = document.querySelectorAll('.slider');
+    sliders.forEach((slider) => {
+      let currentIndex = 0;
+      const images = slider.querySelectorAll('img');
+      setInterval(() => {
+        images[currentIndex].classList.remove('active');
+        images[currentIndex].classList.add('hidden');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.remove('hidden');
+        images[currentIndex].classList.add('active');
+      }, intervalImage);
+    });
+  }
 
   filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const category = button.getAttribute("data-category");
+    button.addEventListener('click', () => {
+      const category = button.getAttribute('data-category');
 
-      filterButtons.forEach((btn) => btn.classList.remove("active"));
-      button.classList.add("active");
+      filterButtons.forEach((btn) => btn.classList.remove('active'));
+      button.classList.add('active');
 
       projects.forEach((project) => {
         if (
-          category === "All" ||
-          project.getAttribute("data-category") === category
+          category === 'All' ||
+          project.getAttribute('data-category') === category
         ) {
-          project.classList.remove("hidden");
+          project.classList.remove('hidden');
         } else {
-          project.classList.add("hidden");
+          project.classList.add('hidden');
         }
       });
+      updateImageIndex();
     });
   });
+
+  updateImageIndex();
+  startImageSlider();
 </script>
